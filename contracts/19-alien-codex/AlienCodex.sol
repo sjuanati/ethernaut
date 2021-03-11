@@ -1,3 +1,4 @@
+/*
 pragma solidity ^0.5.0;
 
 import '../helpers/Ownable-05.sol';
@@ -28,3 +29,4 @@ contract AlienCodex is Ownable {
     codex[i] = _content;
   }
 }
+*/
