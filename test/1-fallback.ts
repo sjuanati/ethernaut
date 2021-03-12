@@ -1,10 +1,15 @@
+
 const { expectRevert } = require('@openzeppelin/test-helpers');
-const Fallback = artifacts.require('Fallback.sol');
+const Fallback = require('Fallback.sol');
+const web3 = require('web3');
 
-const ethToWei = (item) => web3.utils.toWei(item);
+const ethToWei = (item: string) => web3.utils.toWei(item);
 
-contract('Fallback', (accounts) => {
-    let fallback;
+let contract: any;
+
+contract('Fallback', (accounts: string[]) => {
+    let fallback: any;
+    let assert: any;
     const [owner, user1] = accounts;
 
     beforeEach(async () => {

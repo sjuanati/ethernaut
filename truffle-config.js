@@ -4,6 +4,9 @@ const INFURA_APP_KEY = process.env.INFURA_APP_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY;
 
+require("ts-node").register({
+  files: true,
+});
 
 module.exports = {
   networks: {
