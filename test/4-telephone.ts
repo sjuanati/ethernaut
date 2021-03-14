@@ -19,7 +19,7 @@ beforeEach(async () => {
     telephoneAttack = await TelephoneAttack.new({ from: attacker });
 });
 
-it.only('Telephone -> claim ownership of the contract ', async () => {
+it('Telephone -> claim ownership of the contract ', async () => {
 
     // Owner at the beginning
     const ownerBefore = await telephone.owner.call();
