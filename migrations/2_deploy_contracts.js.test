@@ -1,7 +1,1 @@
-// SPDX-License-Identifier: MIT
-const Fallback = artifacts.require("Fallback");
-
-module.exports = async (deployer, network, addresses) => {
-  await deployer.deploy(Fallback);
-};
-
+module.exports = require("./2_deploy_contracts.ts.test"); //(artifacts, web3);

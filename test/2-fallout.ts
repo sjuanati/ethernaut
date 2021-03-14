@@ -1,30 +1,39 @@
-/*
-const { expectRevert } = require('@openzeppelin/test-helpers');
-const Fallout = artifacts.require('Fallout.sol');
 
-const ethToWei = (item) => web3.utils.toWei(item);
+import { accounts, contract } from '@openzeppelin/test-environment';
+const { balance, ether, BN } = require('@openzeppelin/test-helpers');
+import assert = require('assert');
 
-contract('Fallout', (accounts) => {
-    let fallout;
-    const [owner, user1] = accounts;
+// Ethereum accounts used in these tests
+const [
+    owner, // Contract owner
+    user1, // Random user
+] = accounts;
 
-    beforeEach(async () => {
-        fallout = await Fallout.new({from: owner});
-    });
+// Loads a compiled contract using OpenZeppelin test-environment
+const Fallout = contract.fromArtifact('Fallout');
+let fallout: any;
 
-    it('Claim ownership of the contract', async () => {
+beforeEach(async () => {
+    fallout = await Fallout.new({from: owner});
 
-        // x
-        await fallout.contribute({ from: user1, value: ethToWei('0.0005') });
-
-        // b
-        await fallout.sendTransaction({ from: user1, value: ethToWei('0.0001') });
-
-
-    });
+    // Send 5 ETH
+    await fallout.allocate({ from: owner, value: ether('5') });
 
 });
-*/
 
-// Claim ownership of the contract 
-// NOT a real constructor ;)
+it('Fallout -> claim ownership & reduce contract balance to 0', async () => {
+
+    // Check contract balance BEFORE
+    const balanceBefore = await balance.current(fallout.address);
+
+    // Call "pseudo-constructor"
+    await fallout.Fal1out({ from: user1 });
+
+    // Withdraw all contract funds
+    await fallout.collectAllocations({ from: user1 });
+    const balanceAfter = await balance.current(fallout.address);
+
+    assert(balanceBefore.toString() === ether('5').toString());
+    assert(balanceAfter.toString() === ether('0').toString());
+
+});
