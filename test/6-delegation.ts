@@ -1,4 +1,5 @@
 import { accounts, contract, web3 } from '@openzeppelin/test-environment';
+import assert = require('assert');
 
 // Addresses
 const [
@@ -19,7 +20,7 @@ beforeEach(async () => {
 
 it('Delegation -> claim ownership of Delegation contract', async () => {
 
-    console.log('before', await delegation.owner.call());
+    const ownerBefore = await delegation.owner.call();
 
     const payload = web3.eth.abi.encodeFunctionSignature({
         name: 'pwn',
@@ -32,6 +33,8 @@ it('Delegation -> claim ownership of Delegation contract', async () => {
         data: payload,
     });
 
-    console.log('after', await delegation.owner.call());
+    const ownerAfter = await delegation.owner.call();
+
+    assert(ownerBefore !== ownerAfter);
 });
 

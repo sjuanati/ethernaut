@@ -30,10 +30,6 @@ it('Telephone -> claim ownership of the contract ', async () => {
     // Owner at the end
     const ownerAfter = await telephone.owner.call();
 
-    console.log('before', ownerBefore)
-    console.log('after', ownerAfter)
-
-
     assert(ownerBefore === owner);
     assert(ownerAfter === attacker);
 
