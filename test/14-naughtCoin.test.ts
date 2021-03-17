@@ -6,6 +6,7 @@ import assert = require('assert');
 const [
     owner, // Contract owner
     attacker, // Attacker
+    uncle, // Destination of the tokens
 ] = accounts;
 
 // Loads contracts
@@ -15,10 +16,17 @@ let naughtCoin: any;
 //let gatekeeperTwoAttack: any;
 
 beforeEach(async () => {
-    naughtCoin = await NaughtCoin.new({ from: owner });
+    naughtCoin = await NaughtCoin.new(attacker, { from: owner });
 });
 
-it('Gatekeeper Two -> make it past the gatekeeper and register as an entrant', async () => {
+it('Naught Coin -> getting the token balance to 0', async () => {
+    const balanceBefore = await naughtCoin.balanceOf(attacker);
 
-    console.log('Hallo');
+    await naughtCoin.approve(uncle, balanceBefore, { from: attacker });
+
+    await naughtCoin.transferFrom(attacker, uncle, balanceBefore, { from: uncle });
+
+    const balanceAfter = await naughtCoin.balanceOf(attacker);
+
+    assert(balanceAfter.toString() === '0', 'balance after');
 });
