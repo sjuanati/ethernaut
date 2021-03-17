@@ -8,12 +8,12 @@ contract GatekeeperOne {
   address public entrant;
 
   modifier gateOne() {
-    require(msg.sender != tx.origin);
+    require(msg.sender != tx.origin, 'gateOne failed');
     _;
   }
 
   modifier gateTwo() {
-    require(gasleft().mod(8191) == 0);
+    require(gasleft().mod(8191) == 0, 'gateTwo failed');
     _;
   }
 
