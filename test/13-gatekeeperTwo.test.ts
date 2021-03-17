@@ -19,7 +19,6 @@ beforeEach(async () => {
 });
 
 it('Gatekeeper Two -> make it past the gatekeeper and register as an entrant', async () => {
-
     gatekeeperTwoAttack = await GatekeeperTwoAttack.new(gatekeeperTwo.address, { from: attacker });
 
     assert(await gatekeeperTwo.entrant.call() === attacker);

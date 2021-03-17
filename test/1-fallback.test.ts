@@ -18,7 +18,6 @@ beforeEach(async () => {
 });
 
 it('Fallback -> claim ownership & reduce contract balance to 0', async () => {
-
     // Send some amount to pass 'contributions[msg.sender] > 0)'
     //await fallback.contribute({ from: user1, value: ethToWei('0.0005') });
     await fallback.contribute({ from: user1, value: ether('0.0005') });

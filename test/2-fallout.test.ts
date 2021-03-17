@@ -1,6 +1,6 @@
 
 import { accounts, contract } from '@openzeppelin/test-environment';
-const { balance, ether, BN } = require('@openzeppelin/test-helpers');
+const { balance, ether } = require('@openzeppelin/test-helpers');
 import assert = require('assert');
 
 // Ethereum accounts used in these tests
@@ -18,11 +18,9 @@ beforeEach(async () => {
 
     // Send 5 ETH
     await fallout.allocate({ from: owner, value: ether('5') });
-
 });
 
 it('Fallout -> claim ownership & reduce contract balance to 0', async () => {
-
     // Check contract balance BEFORE
     const balanceBefore = await balance.current(fallout.address);
 
@@ -35,5 +33,4 @@ it('Fallout -> claim ownership & reduce contract balance to 0', async () => {
 
     assert(balanceBefore.toString() === ether('5').toString());
     assert(balanceAfter.toString() === ether('0').toString());
-
 });

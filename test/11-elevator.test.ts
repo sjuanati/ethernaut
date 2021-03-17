@@ -1,5 +1,4 @@
 import { accounts, contract } from '@openzeppelin/test-environment';
-const { ether, balance } = require('@openzeppelin/test-helpers');
 import assert = require('assert');
 
 // Addresses
@@ -20,7 +19,6 @@ beforeEach(async () => {
 });
 
 it('Elevator -> be on the top floor', async () => {
-
     const floorBefore = await elevator.floor.call();
     const topBefore = await elevator.top.call();
 

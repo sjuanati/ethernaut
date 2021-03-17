@@ -16,7 +16,6 @@ beforeEach(async () => {
 });
 
 it('Vault -> unlock the pass', async () => {
-
     const lockBefore = await vault.locked.call();
 
     // Get stored data in the 2nd variable

@@ -21,7 +21,6 @@ beforeEach(async () => {
 });
 
 it('CoinFlip -> guess the correct outcome 10 times ', async () => {
-
     // Wins at the beginning: 0
     const winsBefore = new BN(await coinflip.consecutiveWins.call());
 

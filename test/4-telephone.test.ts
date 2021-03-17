@@ -20,7 +20,6 @@ beforeEach(async () => {
 });
 
 it('Telephone -> claim ownership of the contract ', async () => {
-
     // Owner at the beginning
     const ownerBefore = await telephone.owner.call();
 
@@ -32,6 +31,5 @@ it('Telephone -> claim ownership of the contract ', async () => {
 
     assert(ownerBefore === owner);
     assert(ownerAfter === attacker);
-
 });
 

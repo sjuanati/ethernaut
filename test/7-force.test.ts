@@ -1,4 +1,4 @@
-import { accounts, contract, web3 } from '@openzeppelin/test-environment';
+import { accounts, contract } from '@openzeppelin/test-environment';
 const { balance, ether } = require('@openzeppelin/test-helpers');
 import assert = require('assert');
 
@@ -20,7 +20,6 @@ beforeEach(async () => {
 });
 
 it('Force -> make the balance of the contract greater than zero', async () => {
-
     const balanceBefore = await balance.current(force.address);
 
     // Call a selfdestruct contract to transfer ether to the victim

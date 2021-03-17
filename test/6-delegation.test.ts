@@ -19,7 +19,6 @@ beforeEach(async () => {
 });
 
 it('Delegation -> claim ownership of Delegation contract', async () => {
-
     const ownerBefore = await delegation.owner.call();
 
     const payload = web3.eth.abi.encodeFunctionSignature({

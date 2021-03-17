@@ -1,6 +1,5 @@
 
 import { accounts, contract, web3 } from '@openzeppelin/test-environment';
-const { ether, balance } = require('@openzeppelin/test-helpers');
 import assert = require('assert');
 
 // Addresses

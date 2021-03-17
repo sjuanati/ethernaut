@@ -21,7 +21,6 @@ beforeEach(async () => {
 });
 
 it('King -> break the level proclamation', async () => {
-
     const kingBefore = await king._king();
 
     // A contract with revert in its fallback will call the King contract to
@@ -36,7 +35,5 @@ it('King -> break the level proclamation', async () => {
         king.sendTransaction({ from: player1, value: ether('7') }),
         'contract is f*cked'
     );
-    
-
 });
 

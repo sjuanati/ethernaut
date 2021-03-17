@@ -1,6 +1,5 @@
 
 import { accounts, contract } from '@openzeppelin/test-environment';
-import assert = require('assert');
 
 // Addresses
 const [
@@ -17,7 +16,6 @@ beforeEach(async () => {
 });
 
 it('Token -> goten a large amount of tokens', async () => {
-
     //console.log('before', (await token.balanceOf(attacker)).toString());
     await token.transfer(owner, 1, { from: attacker });
     //console.log('after', (await token.balanceOf(attacker)).toString());

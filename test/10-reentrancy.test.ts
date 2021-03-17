@@ -20,7 +20,6 @@ beforeEach(async () => {
 });
 
 it('Reentrance -> steal all the funds', async () => {
-
     // Founder sends initial amount
     await reentrance.donate(owner, { from: owner, value: ether('5') });
 
@@ -35,7 +34,5 @@ it('Reentrance -> steal all the funds', async () => {
 
     assert(balanceBefore.toString() === ether('5').toString(), 'initial balance');
     assert(balanceAfter.toString() === '0', 'final balance');
-
-
 });
 
