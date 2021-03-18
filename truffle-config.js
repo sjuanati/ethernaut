@@ -46,9 +46,12 @@ module.exports = {
     etherscan: ETHERSCAN_KEY
   },
   // Configure compilers
+  // Only for the AlienCoxed contract in pragma 0.5.0
+  // contracts_directory: "./contracts/19-alien-codex/",
   compilers: {
     solc: {
       version: "0.6.0",
+      // version: "0.5.0",
       docker: false,
       settings: {
         optimizer: {
