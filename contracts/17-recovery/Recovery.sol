@@ -2,14 +2,14 @@ pragma solidity ^0.6.0;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
-/*
 contract Recovery {
     //generate tokens
     function generateToken(string memory _name, uint256 _initialSupply) public {
         new SimpleToken(_name, msg.sender, _initialSupply);
     }
 }
-*/
+
+/*
 contract Recovery {
     address public con;
     //generate tokens
@@ -18,7 +18,7 @@ contract Recovery {
         con = address(st);
     }
 }
-
+*/
 contract SimpleToken {
     using SafeMath for uint256;
     // public variables

