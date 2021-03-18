@@ -10,12 +10,21 @@ const [
 
 // Loads contracts
 const Preservation = contract.fromArtifact('Preservation');
-//const GatekeeperTwoAttack = contract.fromArtifact('GatekeeperTwoAttack');
+const LibraryContract = contract.fromArtifact('LibraryContract');
+const PreservationAttack = contract.fromArtifact('PreservationAttack');
 let preservation: any;
-//let gatekeeperTwoAttack: any;
+let libraryContract1: any;
+let libraryContract2: any;
 
 beforeEach(async () => {
-    preservation = await Preservation.new(attacker, { from: owner });
+    // Contracts deployment
+    libraryContract1 = await LibraryContract.new();
+    libraryContract2 = await LibraryContract.new();
+    preservation = await Preservation.new(
+        libraryContract1.address,
+        libraryContract2.address,
+        { from: owner }
+    );
 });
 
 it.only('Preservation -> claim ownership of the instance', async () => {
