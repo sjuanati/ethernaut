@@ -37,6 +37,7 @@ module.exports = {
   },
   // Tests
   mocha: {
+    timeout: 100000
   },
   // Contract verification
   plugins: [
