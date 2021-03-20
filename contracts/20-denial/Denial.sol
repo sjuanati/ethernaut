@@ -1,3 +1,4 @@
+/*
 pragma solidity ^0.6.0;
 
 import '@openzeppelin/contracts/math/SafeMath.sol';
@@ -34,3 +35,4 @@ contract Denial {
         return address(this).balance;
     }
 }
+*/
