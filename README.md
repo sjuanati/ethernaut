@@ -133,3 +133,9 @@ Things that might help:
 - `Shop` expects to be used from a `Buyer`
 - Understanding how `gas()` options works
 
+-------
+
+Helpers:
+https://github.com/r1oga/ethernaut
+https://github.com/STYJ/Ethernaut-Solutions
+https://github.com/OpenZeppelin/ethernaut
